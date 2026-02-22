@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, Search, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { clearSession, getSession } from "@/lib/auth";
 
 const navItems = [
   { label: "Screener", href: "/screener" },
@@ -24,6 +25,14 @@ const navItems = [
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [referOpen, setReferOpen] = useState(false);
+  const session = getSession();
+  const dashboardHref =
+    session?.user.kind === "admin" ? "/admin/dashboard" : "/dashboard";
+
+  const onLogout = () => {
+    clearSession();
+    window.location.href = "/";
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-border/30">
@@ -84,16 +93,35 @@ const Header = () => {
               <Search className="w-4 h-4" />
             </Button>
           </Link>
-          <Link to="/login">
-            <Button variant="ghost" className="text-sm text-muted-foreground hover:text-foreground">
-              Login
-            </Button>
-          </Link>
-          <Link to="/register">
-            <Button className="text-sm bg-gradient-primary text-primary-foreground hover:opacity-90 transition-opacity">
-              Register
-            </Button>
-          </Link>
+          {session ? (
+            <>
+              <Link to={dashboardHref}>
+                <Button variant="ghost" className="text-sm text-muted-foreground hover:text-foreground">
+                  Dashboard
+                </Button>
+              </Link>
+              <Button
+                variant="ghost"
+                onClick={onLogout}
+                className="text-sm text-muted-foreground hover:text-foreground"
+              >
+                Logout
+              </Button>
+            </>
+          ) : (
+            <>
+              <Link to="/login">
+                <Button variant="ghost" className="text-sm text-muted-foreground hover:text-foreground">
+                  Login
+                </Button>
+              </Link>
+              <Link to="/register">
+                <Button className="text-sm bg-gradient-primary text-primary-foreground hover:opacity-90 transition-opacity">
+                  Register
+                </Button>
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Mobile Toggle */}
@@ -119,12 +147,28 @@ const Header = () => {
             </Link>
           ))}
           <div className="flex gap-2 pt-2 border-t border-border/30">
-            <Link to="/login" className="flex-1" onClick={() => setMobileOpen(false)}>
-              <Button variant="ghost" className="w-full text-sm">Login</Button>
-            </Link>
-            <Link to="/register" className="flex-1" onClick={() => setMobileOpen(false)}>
-              <Button className="w-full text-sm bg-gradient-primary text-primary-foreground">Register</Button>
-            </Link>
+            {session ? (
+              <>
+                <Link to={dashboardHref} className="flex-1" onClick={() => setMobileOpen(false)}>
+                  <Button variant="ghost" className="w-full text-sm">Dashboard</Button>
+                </Link>
+                <Button
+                  className="w-full text-sm bg-gradient-primary text-primary-foreground"
+                  onClick={onLogout}
+                >
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link to="/login" className="flex-1" onClick={() => setMobileOpen(false)}>
+                  <Button variant="ghost" className="w-full text-sm">Login</Button>
+                </Link>
+                <Link to="/register" className="flex-1" onClick={() => setMobileOpen(false)}>
+                  <Button className="w-full text-sm bg-gradient-primary text-primary-foreground">Register</Button>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       )}

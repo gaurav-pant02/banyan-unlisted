@@ -15,7 +15,9 @@ import SearchPage from "./pages/SearchPage";
 import Refer from "./pages/Refer";
 import Blogs from "./pages/Blogs";
 import Dashboard from "./pages/Dashboard";
+import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const queryClient = new QueryClient();
 
@@ -37,7 +39,22 @@ const App = () => (
           <Route path="/search" element={<SearchPage />} />
           <Route path="/refer" element={<Refer />} />
           <Route path="/blogs" element={<Blogs />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute allow="client">
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/dashboard"
+            element={
+              <ProtectedRoute allow="admin">
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

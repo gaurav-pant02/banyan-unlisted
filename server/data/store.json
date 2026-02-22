@@ -1,0 +1,53 @@
+{
+  "users": [
+    {
+      "id": "usr_a4b0f6f59897e87f",
+      "firstName": "Master",
+      "lastName": "Admin",
+      "email": "owner@banyan.local",
+      "mobile": "",
+      "companyName": "Banyan",
+      "kind": "admin",
+      "adminRole": "master_admin",
+      "accountType": null,
+      "linkedUserIds": [],
+      "passwordHash": "3641495fce2f205b3e1b3944d2569767:121e9c89fae33518f871389deb12b33f9c697c258d1db47c418dfd803b70158b5d04b23f9495f7cda7392bfe1ccad6ac2b098c5ed6c5ea7afb71950b158221e4",
+      "createdAt": "2026-02-22T17:23:53.290Z",
+      "updatedAt": "2026-02-22T17:23:53.290Z"
+    },
+    {
+      "id": "usr_34d65979f5ed5592",
+      "firstName": "Test",
+      "lastName": "User",
+      "email": "testuser1@example.com",
+      "mobile": "9999999999",
+      "companyName": "",
+      "kind": "client",
+      "accountType": "individual",
+      "adminRole": null,
+      "linkedUserIds": [],
+      "passwordHash": "d5f2356ee0c8db589ec549a086d7a0de:a15434281475914e2b42de70914a66ecd01216f05ef8a3f0708789d11a2259bd9111d8f05337bb14701e7482adafa5b49e66a4c01986a99725ba15aad6eb723e",
+      "createdAt": "2026-02-22T17:29:09.784Z",
+      "updatedAt": "2026-02-22T17:29:09.784Z"
+    },
+    {
+      "id": "usr_21b7623851f5bf2a",
+      "firstName": "Vedansh",
+      "lastName": "Singh",
+      "email": "vxdxnsh@gmail.com",
+      "mobile": "8826873264",
+      "companyName": "",
+      "kind": "client",
+      "accountType": "individual",
+      "adminRole": null,
+      "linkedUserIds": [],
+      "passwordHash": "9fa23ad473dc70fdb87d6d4d31c7368d:625681b2b5d3ad1fea4056428d883506d4bd19b4f1ed5df01f530aa87d9b969cd270834303b3f40e68444d52b99dd4078bb7703c7990753902af798e99974a19",
+      "createdAt": "2026-02-22T17:33:05.918Z",
+      "updatedAt": "2026-02-22T17:33:05.918Z"
+    }
+  ],
+  "stocks": [],
+  "blogs": [],
+  "enquiries": [],
+  "pendingActions": []
+}
